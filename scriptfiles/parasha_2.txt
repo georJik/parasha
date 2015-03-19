@@ -1,0 +1,217 @@
+// TextDraw developed using Zamaroht's Textdraw Editor 1.0
+
+// On top of script:
+new Text:c_cch;
+new Text:c_unbox;
+new Text:c_next;
+new Text:name[playerid];
+new Text:lname[playerid];
+new Text:gender[playerid];
+new Text:g_left;
+new Text:g_right;
+new Text:m_right;
+new Text:m_left;
+new Text:model[playerid];
+new Text:age[playerid];
+new Text:minus;
+new Text:plus;
+
+// In OnGameModeInit prefferably, we procced to create our textdraws:
+c_cch = TextDrawCreate(320.000000, 120.000000, "CREATE CHARTER");
+TextDrawAlignment(c_cch, 2);
+TextDrawBackgroundColor(c_cch, 255);
+TextDrawFont(c_cch, 2);
+TextDrawLetterSize(c_cch, 0.319999, 1.500000);
+TextDrawColor(c_cch, -1);
+TextDrawSetOutline(c_cch, 0);
+TextDrawSetProportional(c_cch, 1);
+TextDrawSetShadow(c_cch, 0);
+TextDrawUseBox(c_cch, 1);
+TextDrawBoxColor(c_cch, -1639101099);
+TextDrawTextSize(c_cch, 0.000000, 120.000000);
+TextDrawSetSelectable(c_cch, 0);
+
+c_unbox = TextDrawCreate(320.000000, 140.000000, "_");
+TextDrawAlignment(c_unbox, 2);
+TextDrawBackgroundColor(c_unbox, 255);
+TextDrawFont(c_unbox, 2);
+TextDrawLetterSize(c_unbox, 0.219999, 19.500000);
+TextDrawColor(c_unbox, -1);
+TextDrawSetOutline(c_unbox, 0);
+TextDrawSetProportional(c_unbox, 1);
+TextDrawSetShadow(c_unbox, 0);
+TextDrawUseBox(c_unbox, 1);
+TextDrawBoxColor(c_unbox, 85);
+TextDrawTextSize(c_unbox, 0.000000, 120.000000);
+TextDrawSetSelectable(c_unbox, 0);
+
+c_next = TextDrawCreate(320.000000, 319.000000, "NEXT");
+TextDrawAlignment(c_next, 2);
+TextDrawBackgroundColor(c_next, 255);
+TextDrawFont(c_next, 2);
+TextDrawLetterSize(c_next, 0.319999, 1.500000);
+TextDrawColor(c_next, -1);
+TextDrawSetOutline(c_next, 0);
+TextDrawSetProportional(c_next, 1);
+TextDrawSetShadow(c_next, 0);
+TextDrawUseBox(c_next, 1);
+TextDrawBoxColor(c_next, -1639101099);
+TextDrawTextSize(c_next, 57.000000, 120.000000);
+TextDrawSetSelectable(c_next, 1);
+
+name[playerid] = TextDrawCreate(262.000000, 149.000000, "Enter Name");
+TextDrawBackgroundColor(name[playerid], 255);
+TextDrawFont(name[playerid], 1);
+TextDrawLetterSize(name[playerid], 0.260000, 1.500000);
+TextDrawColor(name[playerid], -1);
+TextDrawSetOutline(name[playerid], 0);
+TextDrawSetProportional(name[playerid], 1);
+TextDrawSetShadow(name[playerid], 0);
+TextDrawUseBox(name[playerid], 1);
+TextDrawBoxColor(name[playerid], 1431655765);
+TextDrawTextSize(name[playerid], 377.000000, 10.000000);
+TextDrawSetSelectable(name[playerid], 1);
+
+lname[playerid] = TextDrawCreate(262.000000, 169.000000, "Enter Last Name");
+TextDrawBackgroundColor(lname[playerid], 255);
+TextDrawFont(lname[playerid], 1);
+TextDrawLetterSize(lname[playerid], 0.260000, 1.500000);
+TextDrawColor(lname[playerid], -1);
+TextDrawSetOutline(lname[playerid], 0);
+TextDrawSetProportional(lname[playerid], 1);
+TextDrawSetShadow(lname[playerid], 0);
+TextDrawUseBox(lname[playerid], 1);
+TextDrawBoxColor(lname[playerid], 1431655765);
+TextDrawTextSize(lname[playerid], 377.000000, 10.000000);
+TextDrawSetSelectable(lname[playerid], 1);
+
+gender[playerid] = TextDrawCreate(319.000000, 197.000000, "Gender: Male");
+TextDrawAlignment(gender[playerid], 2);
+TextDrawBackgroundColor(gender[playerid], 255);
+TextDrawFont(gender[playerid], 1);
+TextDrawLetterSize(gender[playerid], 0.200000, 1.300000);
+TextDrawColor(gender[playerid], -1);
+TextDrawSetOutline(gender[playerid], 0);
+TextDrawSetProportional(gender[playerid], 1);
+TextDrawSetShadow(gender[playerid], 0);
+TextDrawUseBox(gender[playerid], 1);
+TextDrawBoxColor(gender[playerid], 1431655765);
+TextDrawTextSize(gender[playerid], 377.000000, 70.000000);
+TextDrawSetSelectable(gender[playerid], 0);
+
+g_left = TextDrawCreate(263.000000, 196.000000, "LD_BEAT:left");
+TextDrawAlignment(g_left, 2);
+TextDrawBackgroundColor(g_left, 255);
+TextDrawFont(g_left, 4);
+TextDrawLetterSize(g_left, 0.000000, 1.300000);
+TextDrawColor(g_left, -1);
+TextDrawSetOutline(g_left, 0);
+TextDrawSetProportional(g_left, 1);
+TextDrawSetShadow(g_left, 0);
+TextDrawUseBox(g_left, 1);
+TextDrawBoxColor(g_left, 1431655765);
+TextDrawTextSize(g_left, 14.000000, 16.000000);
+TextDrawSetSelectable(g_left, 1);
+
+g_right = TextDrawCreate(362.000000, 196.000000, "LD_BEAT:right");
+TextDrawAlignment(g_right, 2);
+TextDrawBackgroundColor(g_right, 255);
+TextDrawFont(g_right, 4);
+TextDrawLetterSize(g_right, 0.000000, 1.300000);
+TextDrawColor(g_right, -1);
+TextDrawSetOutline(g_right, 0);
+TextDrawSetProportional(g_right, 1);
+TextDrawSetShadow(g_right, 0);
+TextDrawUseBox(g_right, 1);
+TextDrawBoxColor(g_right, 1431655765);
+TextDrawTextSize(g_right, 14.000000, 16.000000);
+TextDrawSetSelectable(g_right, 1);
+
+m_right = TextDrawCreate(362.000000, 245.000000, "LD_BEAT:right");
+TextDrawAlignment(m_right, 2);
+TextDrawBackgroundColor(m_right, 255);
+TextDrawFont(m_right, 4);
+TextDrawLetterSize(m_right, 0.000000, 1.300000);
+TextDrawColor(m_right, -1);
+TextDrawSetOutline(m_right, 0);
+TextDrawSetProportional(m_right, 1);
+TextDrawSetShadow(m_right, 0);
+TextDrawUseBox(m_right, 1);
+TextDrawBoxColor(m_right, 1431655765);
+TextDrawTextSize(m_right, 14.000000, 16.000000);
+TextDrawSetSelectable(m_right, 1);
+
+m_left = TextDrawCreate(263.000000, 245.000000, "LD_BEAT:left");
+TextDrawAlignment(m_left, 2);
+TextDrawBackgroundColor(m_left, 255);
+TextDrawFont(m_left, 4);
+TextDrawLetterSize(m_left, 0.000000, 1.300000);
+TextDrawColor(m_left, -1);
+TextDrawSetOutline(m_left, 0);
+TextDrawSetProportional(m_left, 1);
+TextDrawSetShadow(m_left, 0);
+TextDrawUseBox(m_left, 1);
+TextDrawBoxColor(m_left, 1431655765);
+TextDrawTextSize(m_left, 14.000000, 16.000000);
+TextDrawSetSelectable(m_left, 1);
+
+model[playerid] = TextDrawCreate(293.000000, 221.000000, "model");
+TextDrawAlignment(model[playerid], 2);
+TextDrawBackgroundColor(model[playerid], 0);
+TextDrawFont(model[playerid], 5);
+TextDrawLetterSize(model[playerid], 0.500000, 1.000000);
+TextDrawColor(model[playerid], -1);
+TextDrawSetOutline(model[playerid], 0);
+TextDrawSetProportional(model[playerid], 1);
+TextDrawSetShadow(model[playerid], 1);
+TextDrawUseBox(model[playerid], 1);
+TextDrawBoxColor(model[playerid], 0);
+TextDrawTextSize(model[playerid], 50.000000, 60.000000);
+TextDrawSetPreviewModel(model[playerid], 1);
+TextDrawSetPreviewRot(model[playerid], 0.000000, 0.000000, 15.000000, 1.000000);
+TextDrawSetSelectable(model[playerid], 0);
+
+age[playerid] = TextDrawCreate(319.000000, 294.000000, "Age: 20");
+TextDrawAlignment(age[playerid], 2);
+TextDrawBackgroundColor(age[playerid], 255);
+TextDrawFont(age[playerid], 1);
+TextDrawLetterSize(age[playerid], 0.200000, 1.300000);
+TextDrawColor(age[playerid], -1);
+TextDrawSetOutline(age[playerid], 0);
+TextDrawSetProportional(age[playerid], 1);
+TextDrawSetShadow(age[playerid], 0);
+TextDrawUseBox(age[playerid], 1);
+TextDrawBoxColor(age[playerid], 1431655765);
+TextDrawTextSize(age[playerid], 377.000000, 40.000000);
+TextDrawSetSelectable(age[playerid], 0);
+
+minus = TextDrawCreate(289.000000, 294.000000, "-");
+TextDrawAlignment(minus, 2);
+TextDrawBackgroundColor(minus, 255);
+TextDrawFont(minus, 1);
+TextDrawLetterSize(minus, 0.350000, 1.300000);
+TextDrawColor(minus, -16776961);
+TextDrawSetOutline(minus, 0);
+TextDrawSetProportional(minus, 1);
+TextDrawSetShadow(minus, 0);
+TextDrawUseBox(minus, 1);
+TextDrawBoxColor(minus, 1431655765);
+TextDrawTextSize(minus, 377.000000, 9.000000);
+TextDrawSetSelectable(minus, 1);
+
+plus = TextDrawCreate(349.000000, 294.000000, "+");
+TextDrawAlignment(plus, 2);
+TextDrawBackgroundColor(plus, 255);
+TextDrawFont(plus, 1);
+TextDrawLetterSize(plus, 0.350000, 1.300000);
+TextDrawColor(plus, 96492799);
+TextDrawSetOutline(plus, 0);
+TextDrawSetProportional(plus, 1);
+TextDrawSetShadow(plus, 0);
+TextDrawUseBox(plus, 1);
+TextDrawBoxColor(plus, 1431655765);
+TextDrawTextSize(plus, 377.000000, 9.000000);
+TextDrawSetSelectable(plus, 1);
+
+// You can now use TextDrawShowForPlayer(-ForAll), TextDrawHideForPlayer(-ForAll) and
+// TextDrawDestroy functions to show, hide, and destroy the textdraw.

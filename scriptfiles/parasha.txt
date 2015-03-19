@@ -1,0 +1,200 @@
+// TextDraw developed using Zamaroht's Textdraw Editor 1.0
+
+// On top of script:
+new Text:acc_log;
+new Text:acc_reg;
+new Text:next;
+new Text:un_box1;
+new Text:e_email[MAX_PLAYERS];
+new Text:e_pass[MAX_PLAYERS];
+new Text:login;
+new Text:reg;
+new Text:ch_text;
+new Text:un_box;
+new Text:ch_1m[MAX_PLAYERS];
+new Text:ch_2m[MAX_PLAYERS];
+new Text:ch_1[MAX_PLAYERS];
+new Text:ch_2[MAX_PLAYERS];
+
+// In OnGameModeInit prefferably, we procced to create our textdraws:
+acc_log = TextDrawCreate(170.000000, 156.000000, "LOGIN");
+TextDrawAlignment(acc_log, 2);
+TextDrawBackgroundColor(acc_log, 255);
+TextDrawFont(acc_log, 2);
+TextDrawLetterSize(acc_log, 0.310000, 1.899999);
+TextDrawColor(acc_log, -1);
+TextDrawSetOutline(acc_log, 0);
+TextDrawSetProportional(acc_log, 1);
+TextDrawSetShadow(acc_log, 0);
+TextDrawUseBox(acc_log, 1);
+TextDrawBoxColor(acc_log, -1639101048);
+TextDrawTextSize(acc_log, 230.000000, 110.000000);
+TextDrawSetSelectable(acc_log, 0);
+
+
+acc_reg = TextDrawCreate(170.000000, 156.000000, "REGISTRATION");
+TextDrawAlignment(acc_reg, 2);
+TextDrawBackgroundColor(acc_reg, 255);
+TextDrawFont(acc_reg, 2);
+TextDrawLetterSize(acc_reg, 0.310000, 1.899999);
+TextDrawColor(acc_reg, -1);
+TextDrawSetOutline(acc_reg, 0);
+TextDrawSetProportional(acc_reg, 1);
+TextDrawSetShadow(acc_reg, 0);
+TextDrawUseBox(acc_reg, 1);
+TextDrawBoxColor(acc_reg, -1639101048);
+TextDrawTextSize(acc_reg, 230.000000, 110.000000);
+TextDrawSetSelectable(acc_reg, 0);
+
+next = TextDrawCreate(170.000000, 223.000000, "NEXT");
+TextDrawAlignment(next, 2);
+TextDrawBackgroundColor(next, 255);
+TextDrawFont(next, 2);
+TextDrawLetterSize(next, 0.310000, 1.899999);
+TextDrawColor(next, -1);
+TextDrawSetOutline(next, 0);
+TextDrawSetProportional(next, 1);
+TextDrawSetShadow(next, 0);
+TextDrawUseBox(next, 1);
+TextDrawBoxColor(next, -1639101048);
+TextDrawTextSize(next, 15.000000, 115.000000);
+TextDrawSetSelectable(next, 0);
+
+un_box1 = TextDrawCreate(170.000000, 178.000000, "_");
+TextDrawAlignment(un_box1, 2);
+TextDrawBackgroundColor(un_box1, 255);
+TextDrawFont(un_box1, 2);
+TextDrawLetterSize(un_box1, 0.310000, 4.500000);
+TextDrawColor(un_box1, 85);
+TextDrawSetOutline(un_box1, 0);
+TextDrawSetProportional(un_box1, 1);
+TextDrawSetShadow(un_box1, 0);
+TextDrawUseBox(un_box1, 1);
+TextDrawBoxColor(un_box1, 85);
+TextDrawTextSize(un_box1, 230.000000, 103.000000);
+TextDrawSetSelectable(un_box1, 0);
+
+e_email[playerid] = TextDrawCreate(121.000000, 182.000000, "Enter e-mail");
+TextDrawBackgroundColor(e_email[playerid], 255);
+TextDrawFont(e_email[playerid], 1);
+TextDrawLetterSize(e_email[playerid], 0.180000, 1.500000);
+TextDrawColor(e_email[playerid], -1);
+TextDrawSetOutline(e_email[playerid], 0);
+TextDrawSetProportional(e_email[playerid], 1);
+TextDrawSetShadow(e_email[playerid], 0);
+TextDrawUseBox(e_email[playerid], 1);
+TextDrawBoxColor(e_email[playerid], 1431655782);
+TextDrawTextSize(e_email[playerid], 219.000000, 52.000000);
+TextDrawSetSelectable(e_email[playerid], 1);
+
+e_pass[playerid] = TextDrawCreate(121.000000, 202.000000, "Enter password");
+TextDrawBackgroundColor(e_pass[playerid], 255);
+TextDrawFont(e_pass[playerid], 1);
+TextDrawLetterSize(e_pass[playerid], 0.180000, 1.500000);
+TextDrawColor(e_pass[playerid], -1);
+TextDrawSetOutline(e_pass[playerid], 0);
+TextDrawSetProportional(e_pass[playerid], 1);
+TextDrawSetShadow(e_pass[playerid], 0);
+TextDrawUseBox(e_pass[playerid], 1);
+TextDrawBoxColor(e_pass[playerid], 1431655765);
+TextDrawTextSize(e_pass[playerid], 219.000000, 53.000000);
+TextDrawSetSelectable(e_pass[playerid], 1);
+
+login = TextDrawCreate(250.000000, 190.000000, "LOGIN");
+TextDrawBackgroundColor(login, 255);
+TextDrawFont(login, 1);
+TextDrawLetterSize(login, 0.500000, 2.000000);
+TextDrawColor(login, 1104210431);
+TextDrawSetOutline(login, 0);
+TextDrawSetProportional(login, 1);
+TextDrawSetShadow(login, 0);
+TextDrawSetSelectable(login, 1);
+
+reg = TextDrawCreate(330.000000, 190.000000, "REGISTRATION");
+TextDrawBackgroundColor(reg, 255);
+TextDrawFont(reg, 1);
+TextDrawLetterSize(reg, 0.500000, 2.000000);
+TextDrawColor(reg, 1104210431);
+TextDrawSetOutline(reg, 0);
+TextDrawSetProportional(reg, 1);
+TextDrawSetShadow(reg, 0);
+TextDrawSetSelectable(reg, 1);
+
+ch_text = TextDrawCreate(533.000000, 156.000000, "CHARTERS");
+TextDrawAlignment(ch_text, 2);
+TextDrawBackgroundColor(ch_text, 255);
+TextDrawFont(ch_text, 2);
+TextDrawLetterSize(ch_text, 0.310000, 1.899999);
+TextDrawColor(ch_text, -1);
+TextDrawSetOutline(ch_text, 0);
+TextDrawSetProportional(ch_text, 1);
+TextDrawSetShadow(ch_text, 0);
+TextDrawUseBox(ch_text, 1);
+TextDrawBoxColor(ch_text, -1639101048);
+TextDrawTextSize(ch_text, 230.000000, 140.000000);
+TextDrawSetSelectable(ch_text, 0);
+
+un_box = TextDrawCreate(533.000000, 178.000000, "_");
+TextDrawAlignment(un_box, 2);
+TextDrawBackgroundColor(un_box, 255);
+TextDrawFont(un_box, 2);
+TextDrawLetterSize(un_box, 0.310000, 10.500000);
+TextDrawColor(un_box, 85);
+TextDrawSetOutline(un_box, 0);
+TextDrawSetProportional(un_box, 1);
+TextDrawSetShadow(un_box, 0);
+TextDrawUseBox(un_box, 1);
+TextDrawBoxColor(un_box, 85);
+TextDrawTextSize(un_box, 230.000000, 140.000000);
+TextDrawSetSelectable(un_box, 0);
+
+ch_1m[playerid] = TextDrawCreate(466.000000, 176.000000, "ch1");
+TextDrawBackgroundColor(ch_1m[playerid], 0);
+TextDrawFont(ch_1m[playerid], 5);
+TextDrawLetterSize(ch_1m[playerid], 0.500000, 1.000000);
+TextDrawColor(ch_1m[playerid], -1);
+TextDrawSetOutline(ch_1m[playerid], 1);
+TextDrawSetProportional(ch_1m[playerid], 1);
+TextDrawUseBox(ch_1m[playerid], 1);
+TextDrawBoxColor(ch_1m[playerid], 0);
+TextDrawTextSize(ch_1m[playerid], 60.000000, 80.000000);
+TextDrawSetPreviewModel(ch_1m[playerid], 23000);
+TextDrawSetPreviewRot(ch_1m[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+TextDrawSetSelectable(ch_1m[playerid], 1);
+
+ch_2m[playerid] = TextDrawCreate(536.000000, 176.000000, "ch2");
+TextDrawBackgroundColor(ch_2m[playerid], 0);
+TextDrawFont(ch_2m[playerid], 5);
+TextDrawLetterSize(ch_2m[playerid], 0.500000, 1.000000);
+TextDrawColor(ch_2m[playerid], -1);
+TextDrawSetOutline(ch_2m[playerid], 1);
+TextDrawSetProportional(ch_2m[playerid], 1);
+TextDrawUseBox(ch_2m[playerid], 1);
+TextDrawBoxColor(ch_2m[playerid], 0);
+TextDrawTextSize(ch_2m[playerid], 60.000000, 80.000000);
+TextDrawSetPreviewModel(ch_2m[playerid], 23000);
+TextDrawSetPreviewRot(ch_2m[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+TextDrawSetSelectable(ch_2m[playerid], 1);
+
+ch_1[playerid] = TextDrawCreate(473.000000, 256.000000, "No charter");
+TextDrawBackgroundColor(ch_1[playerid], 255);
+TextDrawFont(ch_1[playerid], 2);
+TextDrawLetterSize(ch_1[playerid], 0.170000, 1.000000);
+TextDrawColor(ch_1[playerid], -1);
+TextDrawSetOutline(ch_1[playerid], 0);
+TextDrawSetProportional(ch_1[playerid], 1);
+TextDrawSetShadow(ch_1[playerid], 0);
+TextDrawSetSelectable(ch_1[playerid], 0);
+
+ch_2[playerid] = TextDrawCreate(544.000000, 256.000000, "No charter");
+TextDrawBackgroundColor(ch_2[playerid], 255);
+TextDrawFont(ch_2[playerid], 2);
+TextDrawLetterSize(ch_2[playerid], 0.170000, 1.000000);
+TextDrawColor(ch_2[playerid], -1);
+TextDrawSetOutline(ch_2[playerid], 0);
+TextDrawSetProportional(ch_2[playerid], 1);
+TextDrawSetShadow(ch_2[playerid], 0);
+TextDrawSetSelectable(ch_2[playerid], 0);
+
+// You can now use TextDrawShowForPlayer(-ForAll), TextDrawHideForPlayer(-ForAll) and
+// TextDrawDestroy functions to show, hide, and destroy the textdraw.
