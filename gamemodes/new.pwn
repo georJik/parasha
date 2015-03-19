@@ -507,6 +507,7 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
+	SaveAccount(playerid, true);
 	return 1;
 }
 
@@ -749,6 +750,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			if(clickedid == ch_2m[playerid]) PUP<playerid:selected>; // так нужно
 			TogglePlayerSpectating(playerid, false), SpawnPlayer(playerid);
 			DeletePVar(playerid,"Select"), CancelSelectTextDraw(playerid);
+			PUP<playerid:logged>;
 		}
 		else
 		{
@@ -809,6 +811,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		mysql_tquery(handle, query, "","i", playerid);
 		TogglePlayerSpectating(playerid, false);
 		SpawnPlayer(playerid);
+		PUP<playerid:logged>;
 		TextDrawHideForPlayer(playerid, c_unbox), TextDrawHideForPlayer(playerid, c_next), TextDrawHideForPlayer(playerid, tname[playerid]), TextDrawHideForPlayer(playerid, lname[playerid]),
 		TextDrawHideForPlayer(playerid, gender[playerid]), TextDrawHideForPlayer(playerid, g_left), TextDrawHideForPlayer(playerid, g_right), TextDrawHideForPlayer(playerid, m_left),
 		TextDrawHideForPlayer(playerid, m_right), TextDrawHideForPlayer(playerid, model[playerid]), TextDrawHideForPlayer(playerid, age[playerid]), TextDrawHideForPlayer(playerid, minus),
@@ -874,7 +877,28 @@ int LoadAccount(playerid)
 
 int SetPlayerSpawn(playerid)
 {
-	SetPlayerSkin(playerid, (!PVB<playerid:selected>) ? Player[playerid][Skin][0] : Player[playerid][Skin][1]);
-	SetPlayerPos(playerid, 0.0, 0.0, 2.0);
+	if(PVB<playerid:logged>)
+	{
+		SetPlayerSkin(playerid, (!PVB<playerid:selected>) ? Player[playerid][Skin][0] : Player[playerid][Skin][1]);
+		SetPlayerPos(playerid, 0.0, 0.0, 2.0);
+	}
+	return true;
+}
+
+int SaveAccount(playerid, threaded)
+{
+	if(!IsPlayerConnected(playerid)) return true;
+	if(1 > GetPlayerState(playerid) > 3) return true;
+	if(GetPlayerSkin(playerid) == 0 || GetPlayerSkin(playerid) == 74) return true;
+	if(PVB<playerid:logged>)
+ 	{
+		query = "UPDATE `accounts` SET  `Skin` = '%i,%i', `Sex` = '%i,%i', `Age` = '%i,%i' ";
+		strcat(query,"WHERE `Email` = '%s'");
+		mysql_format(handle,query,sizeof(query),query, Player[playerid][Skin][0], Player[playerid][Skin][1]
+		, Player[playerid][Sex][0], Player[playerid][Sex][1]
+		, Player[playerid][Age][0], Player[playerid][Age][1], Player[playerid][Email]);
+  		if(threaded) mysql_tquery(handle,query,"","");
+		else mysql_query(handle,query,false);
+	}
 	return true;
 }
