@@ -755,7 +755,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		else
 		{
 			if(clickedid == ch_2m[playerid]) PUP<playerid:selected>;
-			TextDrawShowForPlayer(playerid, c_unbox), TextDrawShowForPlayer(playerid, c_next), TextDrawShowForPlayer(playerid, tname[playerid]), TextDrawShowForPlayer(playerid, lname[playerid]),
+			TextDrawShowForPlayer(playerid, c_unbox), TextDrawShowForPlayer(playerid, c_cch), TextDrawShowForPlayer(playerid, c_next), TextDrawShowForPlayer(playerid, tname[playerid]), TextDrawShowForPlayer(playerid, lname[playerid]),
 			TextDrawShowForPlayer(playerid, gender[playerid]), TextDrawShowForPlayer(playerid, g_left), TextDrawShowForPlayer(playerid, g_right), TextDrawShowForPlayer(playerid, m_left),
 			TextDrawShowForPlayer(playerid, m_right), TextDrawShowForPlayer(playerid, model[playerid]), TextDrawShowForPlayer(playerid, age[playerid]), TextDrawShowForPlayer(playerid, minus),
 			TextDrawShowForPlayer(playerid, plus);
@@ -812,7 +812,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		TogglePlayerSpectating(playerid, false);
 		SpawnPlayer(playerid);
 		PUP<playerid:logged>;
-		TextDrawHideForPlayer(playerid, c_unbox), TextDrawHideForPlayer(playerid, c_next), TextDrawHideForPlayer(playerid, tname[playerid]), TextDrawHideForPlayer(playerid, lname[playerid]),
+		TextDrawHideForPlayer(playerid, c_unbox), TextDrawHideForPlayer(playerid, c_next), TextDrawHideForPlayer(playerid, c_cch), TextDrawHideForPlayer(playerid, tname[playerid]), TextDrawHideForPlayer(playerid, lname[playerid]),
 		TextDrawHideForPlayer(playerid, gender[playerid]), TextDrawHideForPlayer(playerid, g_left), TextDrawHideForPlayer(playerid, g_right), TextDrawHideForPlayer(playerid, m_left),
 		TextDrawHideForPlayer(playerid, m_right), TextDrawHideForPlayer(playerid, model[playerid]), TextDrawHideForPlayer(playerid, age[playerid]), TextDrawHideForPlayer(playerid, minus),
 		TextDrawHideForPlayer(playerid, plus);
